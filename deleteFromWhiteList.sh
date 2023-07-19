@@ -1,16 +1,15 @@
 #!/bin/bash
 
 # Check if all three arguments are provided
-if [ $# -ne 4 ]; then
-  echo "Usage: $0 <ip_range> <country_code> <username> <password>"
+if [ $# -ne 3 ]; then
+  echo "Usage: $0 <ip_range> <username> <password>"
   exit 1
 fi
 
 # Parse the IP range, country code, and bearer token from arguments
 ip_range=$1
-country_code=$2
-username=$3
-password=$4
+username=$2
+password=$3
 
 # Function to convert IP address to integer
 ip_to_int() {
