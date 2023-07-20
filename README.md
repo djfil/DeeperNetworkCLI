@@ -12,6 +12,7 @@
  - Docker (optional)
  - Linux Shell
  - Curl
+ - Connection to the device's network
 
 ## Usage
 
@@ -26,6 +27,14 @@
         docker run --rm deeper-network-auto-requester <IP RANGE> <COUNTRY CODE> <USERNAME> <PASSWORD>
     ```
    It only adds, for the moment. If you wish to delete using docker image just edit the dockerfile and switch the comment between lines 10 and 11. And off course build the image again.
+ 3. You could also change the entrypoint script at runtime and use any of the [Shell](#shell) section scripts:
+    ```bash
+        docker run --rm --entrypoint ./opt/<SCRIPT>.sh deeper-network-auto-requester <ARGUMENTS>
+    ```
+    Example:
+    ```bash
+        docker run --rm --entrypoint ./opt/getToken.sh deeper-network-auto-requester teste paswword
+    ```
    
   ### Shell
    Get Device ID
@@ -89,6 +98,18 @@
     ./setDpnMode.sh <DPN MODE> <USERNAME> <PASSWORD>
     ./setDpnMode.sh full <COUNTRY CODE> <USERNAME> <PASSWORD>
    ```
+
+   Get IP Routing Black List
+    
+    ```bash
+     ./getRoutingBlackList.sh <USERNAME> <PASSWORD>
+    ```
+
+    Get IP Routing White List
+        
+    ```bash
+     ./getRoutingWhiteList.sh <USERNAME> <PASSWORD>
+    ```
 
 # Special Thanks
 - Andrei Menshikh
