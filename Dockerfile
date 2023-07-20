@@ -6,8 +6,14 @@ RUN apt-get update && \
 
 # Copy the script to the container
 COPY getToken.sh /opt/getToken.sh
-COPY addToWhiteList.sh /opt/curl_script.sh
+#COPY getDeviceId.sh /opt/curl_script.sh
+#COPY addToWhiteList.sh /opt/curl_script.sh
 #COPY deleteFromWhiteList.sh /opt/curl_script.sh
+#COPY setDpnMode.sh /opt/curl_script.sh
+#COPY getDpnMode.sh /opt/curl_script.sh
+#COPY listTunnels.sh /opt/curl_script.sh
+#COPY addTunnels.sh /opt/curl_script.sh
+COPY deleteTunnels.sh /opt/curl_script.sh
 
 # Set the script as executable
 RUN chmod +x /opt/getToken.sh

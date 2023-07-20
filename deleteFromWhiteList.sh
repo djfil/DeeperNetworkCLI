@@ -6,7 +6,7 @@ if [ $# -ne 3 ]; then
   exit 1
 fi
 
-# Parse the IP range, country code, and bearer token from arguments
+# Parse the IP range, credentials from arguments
 ip_range=$1
 username=$2
 password=$3
