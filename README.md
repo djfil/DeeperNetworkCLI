@@ -18,6 +18,7 @@
 
 ### Docker (used for testing)
  1. Build the image
+   
     ```bash
         docker build -t deeper-network-auto-requester .
     ```
@@ -26,17 +27,21 @@
     ```bash
         docker run --rm deeper-network-auto-requester <IP RANGE> <COUNTRY CODE> <USERNAME> <PASSWORD>
     ```
-   It only adds, for the moment. If you wish to delete using docker image just edit the dockerfile and switch the comment between lines 10 and 11. And off course build the image again.
+    It only adds, for the moment. If you wish to delete using docker image just edit the dockerfile and switch the comment between lines 10 and 11. And off course build the image again.
  3. You could also change the entrypoint script at runtime and use any of the [Shell](#shell) section scripts:
+
     ```bash
         docker run --rm --entrypoint ./opt/<SCRIPT>.sh deeper-network-auto-requester <ARGUMENTS>
     ```
+
     Example:
+
     ```bash
         docker run --rm --entrypoint ./opt/getToken.sh deeper-network-auto-requester teste paswword
     ```
    
-  ### Shell
+### Shell
+
    Get Device ID
 
    ```bash
@@ -99,17 +104,17 @@
     ./setDpnMode.sh full <COUNTRY CODE> <USERNAME> <PASSWORD>
    ```
 
-   Get IP Routing Black List
-    
-    ```bash
-     ./getRoutingBlackList.sh <USERNAME> <PASSWORD>
-    ```
+   Get IP Routing Black List.
+   
+   ```bash
+    ./getRoutingBlackList.sh <USERNAME> <PASSWORD>
+   ```
 
-    Get IP Routing White List
+   Get IP Routing White List
         
-    ```bash
-     ./getRoutingWhiteList.sh <USERNAME> <PASSWORD>
-    ```
+   ```bash
+    ./getRoutingWhiteList.sh <USERNAME> <PASSWORD>
+   ```
 
 # Special Thanks
 - Andrei Menshikh
