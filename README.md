@@ -1,12 +1,16 @@
 # Deeper Network CLI (ALPHA)
- For the moment it only automates the insertion and removal of ip ranges following the CIDR notation into the Deeper Network device configuration.
+ Command Line Interface for the Deeper Network device.
+ It can handle most stats, some configurations and some actions, like reboot.
+ It is written using only curl and bash, so it should work on any linux distro.
  You may also use a docker image to run this script. See the [Docker](#docker) section for more information.
 
- This is a work in progress.
+## Disclaimer
+ This is a mostly untested work in progress.
+ For the moment it only communicates with the device within its network (such so that the IP 34.34.34.34 ids the device).
 
 ## Features
 - Thought to work only withtin your network, no external dependencies.
-- Handles ranges and lists of arguments.
+- Handles ranges and lists of arguments, where GUI can only handle a single IP.
 
 ## Requirements
  - Docker (optional)
@@ -86,12 +90,12 @@
     ./deleteTunnels.sh "BM KG" teste password
    ```
 
-   Add to the White List
+   Add IP to the White List
 
    ```bash
     ./addToWhiteList.sh <IP RANGE> <COUNTRY CODE> <USERNAME> <PASSWORD>
    ```
-   Remove from the White List
+   Remove IP from the White List
 
    ```bash
     ./deleteFromWhiteList.sh <IP RANGE> <USERNAME> <PASSWORD>
@@ -114,6 +118,46 @@
         
    ```bash
     ./getRoutingWhiteList.sh <USERNAME> <PASSWORD>
+   ```
+
+   Add Donain to the White List
+   
+   ```bash
+    ./addDomainToWhiteList.sh [DOMAIN TUNNEL PAIR] <USERNAME> <PASSWORD>
+   ```
+   Example:
+   ```bash
+    ./addDomainToWhiteList.sh "google.com AMN whatsmyip.org AMN" teste password
+   ```
+
+   Delete Domain from the White List
+
+   ```bash
+    ./deleteDomainFromWhiteList.sh [DOMAINS] <USERNAME> <PASSWORD>
+   ```
+   Example:
+   ```bash
+    ./deleteDomainFromWhiteList.sh "google.com whatsmyip.org" teste password
+   ```
+
+   Add IP Range to the Black List
+    
+   ```bash
+    ./addIpRangeToBlackList.sh <IP RANGE> <USERNAME> <PASSWORD>
+   ```
+   Example:
+   ```bash
+    ./addIpRangeToBlackList.sh 1.1.1.1/32 teste password
+   ```
+
+   Delete IP Range from the Black List
+    
+   ```bash
+    ./deleteIpRangeFromBlackList.sh <IP RANGE> <USERNAME> <PASSWORD>
+   ```
+   Example:
+   ```bash
+    ./deleteIpRangeFromBlackList.sh 1.1.1.1/32 teste password
    ```
 
 # Special Thanks

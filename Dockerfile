@@ -9,8 +9,8 @@ COPY *.sh /opt/.
 
 #COPY getToken.sh /opt/getToken.sh
 #COPY getDeviceId.sh /opt/curl_script.sh
-COPY addToWhiteList.sh /opt/curl_script.sh
-#COPY deleteFromWhiteList.sh /opt/curl_script.sh
+COPY addIPToWhiteList.sh /opt/curl_script.sh
+#COPY deleteIPFromWhiteList.sh /opt/curl_script.sh
 #COPY setDpnMode.sh /opt/curl_script.sh
 #COPY getDpnMode.sh /opt/curl_script.sh
 #COPY listTunnels.sh /opt/curl_script.sh

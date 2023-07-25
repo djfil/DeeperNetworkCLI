@@ -1,14 +1,16 @@
 #!/bin/bash
 
 # Check if all three arguments are provided
-if [ $# -ne 2 ]; then
-  echo "Usage: $0 <username> <password>"
+if [ $# -lt 3 ]; then
+  echo "Usage: $0 <limit> <username> <password> \n limit is an integer number expressing an amount in Megabits per second."
   exit 1
 fi
 
 # Parse the arguments
-username=$1
-password=$2
+number=$1
+result=$((number * 1024))
+username=$2
+password=$3
 
 # Run the getToken.sh script and store the output in a variable
 token_output=$(/opt/getToken.sh $username $password)
@@ -18,7 +20,7 @@ bearer_token=$(echo "$token_output" | grep -o '"token":"Bearer[^"]*' | cut -d '"
 echo "Token: $bearer_token"
 
 # Build the cURL request command
-curl_command="curl 'http://34.34.34.34/api/admin/getDeviceId' -X 'GET' -H 'Authorization: $bearer_token' -H 'Content-Type: application/json'"
+curl_command="curl 'http://34.34.34.34/api/sharing/setBandwidthLimit' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"number\":$result}' -H 'Content-Type: application/json'"
 
 # Print the cURL command to console
 echo "Executing cURL command: $curl_command"
