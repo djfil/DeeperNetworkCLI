@@ -16,9 +16,8 @@
 
 ## Requirements
  - Docker (optional)
- - Linux Shell
- - Curl
- - Connection to the device's network
+ - Linux Shell (if not using docker)
+ - Curl (if not using docker)
 
 ## Usage
 
@@ -26,24 +25,24 @@
  1. Build the image
    
     ```bash
-        docker build -t deeper-network-auto-requester .
+        docker build -t deeper-network-cli:alpha .
     ```
  2. Run the image
 
     ```bash
-        docker run --rm deeper-network-auto-requester <IP RANGE> <COUNTRY CODE> <USERNAME> <PASSWORD>
+        docker run --rm deeper-network-cli:alpha <IP RANGE> <COUNTRY CODE> <USERNAME> <PASSWORD>
     ```
     It only adds, for the moment. If you wish to delete using docker image just edit the dockerfile and switch the comment between lines 10 and 11. And off course build the image again.
  3. You could also change the entrypoint script at runtime and use any of the [Shell](#shell) section scripts:
 
     ```bash
-        docker run --rm --entrypoint ./opt/<SCRIPT>.sh deeper-network-auto-requester <ARGUMENTS>
+        docker run --rm --entrypoint ./opt/<SCRIPT>.sh deeper-network-cli:alpha <ARGUMENTS>
     ```
 
     Example:
 
     ```bash
-        docker run --rm --entrypoint ./opt/getToken.sh deeper-network-auto-requester teste paswword
+        docker run --rm --entrypoint ./opt/getToken.sh deeper-network-cli:alpha teste paswword
     ```
    
 ### Shell
