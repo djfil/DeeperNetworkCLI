@@ -27,7 +27,7 @@ FwIDAQAB
 encrypted_pass=$(echo -n "${password}" | openssl rsautl -encrypt -pubin -inkey <(echo "$public_key") -oaep 2> /dev/null | base64 | tr -d '\n');
 
 # Build the cURL request command
-curl_command="curl 'http://34.34.34.34/api/admin/login' -X 'POST' --data-binary '{\"username\":\"$username\",\"password\":\"$encrypted_pass\"}' -H 'Content-Type: application/json'"
+curl_command="curl -k 'https://34.34.34.34/api/admin/login' -X 'POST' --data-binary '{\"username\":\"$username\",\"password\":\"$encrypted_pass\"}' -H 'Content-Type: application/json'"
 
 # Print the cURL command to the console
 echo "Executing cURL command: $curl_command"

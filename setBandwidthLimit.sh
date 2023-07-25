@@ -20,7 +20,7 @@ bearer_token=$(echo "$token_output" | grep -o '"token":"Bearer[^"]*' | cut -d '"
 echo "Token: $bearer_token"
 
 # Build the cURL request command
-curl_command="curl 'http://34.34.34.34/api/sharing/setBandwidthLimit' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"number\":$result}' -H 'Content-Type: application/json'"
+curl_command="curl -k 'https://34.34.34.34/api/sharing/setBandwidthLimit' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"number\":$result}' -H 'Content-Type: application/json'"
 
 # Print the cURL command to console
 echo "Executing cURL command: $curl_command"

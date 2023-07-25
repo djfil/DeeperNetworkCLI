@@ -11,6 +11,7 @@
 ## Features
 - Thought to work only withtin your network, no external dependencies.
 - Handles ranges and lists of arguments, where GUI can only handle a single IP.
+- You can send info log messages to the device.
 
 ## Requirements
  - Docker (optional)

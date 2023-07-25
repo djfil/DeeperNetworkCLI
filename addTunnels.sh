@@ -29,7 +29,7 @@ for ((i = 0; i < ${#regions_countries_array[@]}; i++)); do
   current_country=$(echo "$current_pair" | cut -d ' ' -f 2)
 
   # Build the cURL request command
-  curl_command="curl 'http://34.34.34.34/api/smartRoute/addTunnel' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"regionCode\":\"$current_region\",\"countryCode\":\"$current_country\"}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/addTunnel' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"regionCode\":\"$current_region\",\"countryCode\":\"$current_country\"}' -H 'Content-Type: application/json'"
 
   # Print the cURL command to console
   echo "Executing cURL command: $curl_command"

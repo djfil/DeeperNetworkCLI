@@ -26,9 +26,9 @@ echo "Token: $bearer_token"
 
 # Build the cURL request command
 if [ "$mode" == "full" ]; then
-  curl_command="curl 'http://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\",\"tunnelCode\":\"$tunnel\",\"killSwitch\":false}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\",\"tunnelCode\":\"$tunnel\",\"killSwitch\":false}' -H 'Content-Type: application/json'"
 else
-  curl_command="curl 'http://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\"}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\"}' -H 'Content-Type: application/json'"
 fi
 
 # Print the cURL command to console
