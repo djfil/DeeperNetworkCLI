@@ -24,5 +24,7 @@ RUN chmod +x /opt/*.sh
 RUN chmod +x /opt/getToken.sh
 RUN chmod +x /opt/curl_script.sh
 
+ENV DEEPER_API_HOST = 34.34.34.34
+
 # Set the entry point to the script
 ENTRYPOINT ["/opt/curl_script.sh"]

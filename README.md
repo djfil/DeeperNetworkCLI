@@ -1,17 +1,18 @@
 # Deeper Network CLI (ALPHA)
- Command Line Interface for the Deeper Network device.
- It can handle most stats, some configurations and some actions, like reboot.
- It is written using only curl and bash, so it should work on any linux distro.
+ Collection of command line scripts composing an <u>**UNOFFICIAL**</u> Command Line Interface for the Deeper Network devices.
+ All derived from the GUI. It can handle most stats, some configurations and some actions, like reboot.
+ It is written using only curl requests in bash, so it should work on any linux distro.
  You may also use a docker image to run this script. See the [Docker](#docker) section for more information.
 
 ## Disclaimer
- This is a mostly untested work in progress.
- For the moment it only communicates with the device within its network (such so that the IP 34.34.34.34 ids the device).
+ This is a mostly untested work in progress. 
+ Use at your own risk.
 
 ## Features
 - Thought to work only withtin your network, no external dependencies.
-- Handles ranges and lists of arguments, where GUI can only handle a single IP.
-- You can send info log messages to the device.
+- Handles ip ranges (in CIDR) and lists of arguments, where GUI can only handle a single IP or domain.
+- You can send <u>info</u> log messages to the device.
+- Host is set through env var `DEEPER_API_HOST`(defaults to 34.34.34.34)
 
 ## Requirements
  - Docker (optional)

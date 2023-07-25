@@ -1,5 +1,7 @@
 #!/bin/bash
 
+api_host="${DEEPER_API_HOST:-34.34.34.34}"
+
 # Check if all three arguments are provided
 if [ $# -lt 3 ]; then
   echo "Usage: $0 <limit> <username> <password> \n limit is an integer number expressing an amount in GigaBytes."
@@ -19,7 +21,7 @@ bearer_token=$(echo "$token_output" | grep -o '"token":"Bearer[^"]*' | cut -d '"
 echo "Token: $bearer_token"
 
 # Build the cURL request command
-curl_command="curl -k 'https://34.34.34.34/api/sharing/setTrafficLimit' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"number\":$mode,\"unit\":\"GB\"}' -H 'Content-Type: application/json'"
+curl_command="curl -k 'https://$api_host/api/sharing/setTrafficLimit' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"number\":$mode,\"unit\":\"GB\"}' -H 'Content-Type: application/json'"
 
 # Print the cURL command to console
 echo "Executing cURL command: $curl_command"

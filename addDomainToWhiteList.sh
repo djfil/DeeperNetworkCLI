@@ -1,5 +1,7 @@
 #!/bin/bash
 
+api_host="${DEEPER_API_HOST:-34.34.34.34}"
+
 # Check if all three arguments are provided
 if [ $# -ne 3 ]; then
   echo "Usage: $0 [domain tunnel pair] <username> <password>"
@@ -29,7 +31,7 @@ for ((i = 0; i < ${#pairs_array[@]}; i++)); do
   current_tunnel=$(echo "$current_pair" | cut -d ' ' -f 2)
 
   # Build the cURL request command
-curl_command="curl -k 'https://34.34.34.34/api/smartRoute/addToWhitelist/domain' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"domainName\":\"$current_domain\",\"tunnelCode\":\"$current_tunnel\"}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://$api_host/api/smartRoute/addToWhitelist/domain' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"domainName\":\"$current_domain\",\"tunnelCode\":\"$current_tunnel\"}' -H 'Content-Type: application/json'"
 
   # Print the cURL command to console
   echo "Executing cURL command: $curl_command"

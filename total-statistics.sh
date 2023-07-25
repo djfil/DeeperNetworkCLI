@@ -1,5 +1,7 @@
 #!/bin/bash
 
+api_host="${DEEPER_API_HOST:-34.34.34.34}"
+
 # Check if all three arguments are provided
 if [ $# -ne 2 ]; then
   echo "Usage: $0 <username> <password>"
@@ -18,7 +20,7 @@ bearer_token=$(echo "$token_output" | grep -o '"token":"Bearer[^"]*' | cut -d '"
 echo "Token: $bearer_token"
 
 # Build the cURL request command
-curl_command="curl -k 'https://34.34.34.34/api/traffic/total-statistics' -X 'GET' -H 'Authorization: $bearer_token' -H 'Content-Type: application/json'"
+curl_command="curl -k 'https://$api_host/api/traffic/total-statistics' -X 'GET' -H 'Authorization: $bearer_token' -H 'Content-Type: application/json'"
 
 # Print the cURL command to console
 echo "Executing cURL command: $curl_command"

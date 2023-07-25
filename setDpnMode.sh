@@ -1,5 +1,7 @@
 #!/bin/bash
 
+api_host="${DEEPER_API_HOST:-34.34.34.34}"
+
 # Check if all three arguments are provided
 if [ $# -lt 3 ]; then
   echo "Usage: $0 <Mode> <username> <password> \n if mode is full specify tunnel code: $0 <Mode> <tunnelCode> <username> <password> \n Note: Killswitch is alsways false for now."
@@ -26,9 +28,9 @@ echo "Token: $bearer_token"
 
 # Build the cURL request command
 if [ "$mode" == "full" ]; then
-  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\",\"tunnelCode\":\"$tunnel\",\"killSwitch\":false}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://$api_host/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\",\"tunnelCode\":\"$tunnel\",\"killSwitch\":false}' -H 'Content-Type: application/json'"
 else
-  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\"}' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://$api_host/api/smartRoute/setDpnMode' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '{\"dpnMode\":\"$mode\"}' -H 'Content-Type: application/json'"
 fi
 
 # Print the cURL command to console

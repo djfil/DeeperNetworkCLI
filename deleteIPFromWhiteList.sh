@@ -1,5 +1,7 @@
 #!/bin/bash
 
+api_host="${DEEPER_API_HOST:-34.34.34.34}"
+
 # Check if all three arguments are provided
 if [ $# -ne 3 ]; then
   echo "Usage: $0 <ip_range> <username> <password>"
@@ -46,7 +48,7 @@ for ((i = 0; i < total_ips; i++)); do
   current_ip=$(int_to_ip "$((network_int + i))")
 
   # Build the cURL request command
-  curl_command="curl -k 'https://34.34.34.34/api/smartRoute/deleteFromWhitelist/ip' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '[\"$current_ip\"]' -H 'Content-Type: application/json'"
+  curl_command="curl -k 'https://$api_host/api/smartRoute/deleteFromWhitelist/ip' -X 'POST' -H 'Authorization: $bearer_token' --data-binary '[\"$current_ip\"]' -H 'Content-Type: application/json'"
 
   # Print the cURL command to console
   echo "Executing cURL command: $curl_command"
